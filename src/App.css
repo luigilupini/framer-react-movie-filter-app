@@ -17,3 +17,21 @@ img {
 h2 {
   font-size: 0.8rem;
 }
+
+.filter-container button {
+  margin-right: 2rem;
+  min-width: 5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border: 2px solid rgb(65, 98, 168);
+  color: rgb(65, 98, 168);
+  background: white;
+  border-radius: 1rem;
+  font-weight: bold;
+  font-family: "Nunito", sans-serif;
+  cursor: pointer;
+}
+button.active {
+  background: rgb(65, 98, 168);
+  color: white;
+}

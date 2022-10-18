@@ -1,8 +1,31 @@
 import { useState, useEffect } from "react";
-import Movie from "./components/Movie";
+/* # AnimatePresence: 
+It enables the animation of components that have been removed from the tree.
+When adding/removing more than a single child, every child must have a unique
+key prop. Any `motion` components that have an `exit` property will animate out
+when removed from the tree. See example snippet below:
+```jsx
+export const Items = ({ items }) => (
+  <AnimatePresence>
+    {items.map(item => (
+      <motion.div
+        key={item.id}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      />
+    ))}
+  </AnimatePresence>
+)
+```
+You can sequence exit animations throughout a tree using variants.
+*/
+import { motion, AnimatePresence } from "framer-motion";
 
 import "./App.css";
+
 import Filter from "./components/Filter";
+import Movie from "./components/Movie";
 
 function App() {
   // We keep the original (we don't mutate it) we render the filtered list.
@@ -33,11 +56,13 @@ function App() {
         activeGenre={activeGenre}
         setActiveGenre={setActiveGenre}
       />
-      <div className="popular-movies">
+      <motion.div className="popular-movies" layout>
         {filterList.map((movie) => (
-          <Movie key={movie.id} movie={movie} />
+          <AnimatePresence>
+            <Movie key={movie.id} movie={movie} />
+          </AnimatePresence>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }

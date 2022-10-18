@@ -37,9 +37,7 @@ function App() {
     const url = "https://api.themoviedb.org/3/movie";
     const api = "d0f6a962c312488745b97f69b178e4b5";
     const sortBy = "popular";
-    const data = await fetch(
-      `${url}/${sortBy}?api_key=${api}&language=en-US&page=1`
-    );
+    const data = await fetch(`${url}/${sortBy}?api_key=${api}&language=en`);
     const movies = await data.json();
     setMovies(movies.results);
     setFilterList(movies.results);
